@@ -1,11 +1,12 @@
 body {
   margin: 0;
-  /* Мягкий фон цвета топлёного молока с нежными персиково-розовыми свечениями */
+  min-height: 100vh;
+  /* Заменили фон на более темный, глубокий кофейный */
   background:
-    radial-gradient(circle at 75% 20%, rgba(255, 180, 150, 0.3), transparent 28rem),
-    radial-gradient(circle at 10% 90%, rgba(255, 160, 180, 0.25), transparent 24rem),
-    linear-gradient(135deg, #fdfbf7 0%, #f7f1e5 55%, #ede4d3 100%);
-  color: #3d312a; /* Темный кофейный контрастный цвет */
+    radial-gradient(circle at 75% 20%, rgba(80, 60, 50, 0.4), transparent 30rem),
+    radial-gradient(circle at 10% 90%, rgba(60, 40, 50, 0.4), transparent 24rem),
+    linear-gradient(135deg, #2a2220 0%, #3d312a 100%);
+  color: #fdfbf7; /* Светлый текст, чтобы читался на темном */
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
 }
