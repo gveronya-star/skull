@@ -5,7 +5,7 @@ body {
   background:
     radial-gradient(circle at 75% 20%, rgba(80, 60, 50, 0.4), transparent 30rem),
     radial-gradient(circle at 10% 90%, rgba(60, 40, 50, 0.4), transparent 24rem),
-    linear-gradient(135deg, #2a2220 0%, #3d312a 100%);
+    linear-gradient(135deg, #3a3028 0%, #5a4738 100%);
   color: #fdfbf7; /* Светлый текст, чтобы читался на темном */
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
