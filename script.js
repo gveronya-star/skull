@@ -68,21 +68,35 @@ function showStatus(message, duration = 1500) {
   }
 }*/
 function trackEyesInteraction(event) {
+  // 1. Проверяем, находится ли курсор близко к ХОТЯ БЫ ОДНОМУ из глаз
+  let isNearAnyEye = false;
+
   eyes.forEach((eye) => {
     const rect = eye.getBoundingClientRect();
     const eyeCenterX = rect.left + rect.width / 2;
     const eyeCenterY = rect.top + rect.height / 2;
     const mouseDistance = Math.hypot(event.clientX - eyeCenterX, event.clientY - eyeCenterY);
 
-    // Теперь включаем только огонь
     if (mouseDistance < 140) {
-      eye.classList.add('is-alert');
-      secretMessage.classList.add('visible');
-    } else {
-      eye.classList.remove('is-alert');
-      secretMessage.classList.remove('visible');
+      isNearAnyEye = true;
     }
   });
+
+  // 2. Применяем состояние ко ВСЕМ глазам сразу
+  eyes.forEach((eye) => {
+    if (isNearAnyEye) {
+      eye.classList.add('is-alert');
+    } else {
+      eye.classList.remove('is-alert');
+    }
+  });
+
+  // 3. Сообщение показываем, если кто-то рядом
+  if (isNearAnyEye) {
+    secretMessage.classList.add('visible');
+  } else {
+    secretMessage.classList.remove('visible');
+  }
 }
 
 
