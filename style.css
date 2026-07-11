@@ -245,9 +245,9 @@ h1 {
   position: absolute;
   inset: 10px;
   border: 2px solid rgba(255, 113, 144, 0.25);
-  background: rgba(255, 255, 255, 0.1);
+ /* background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);*/
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
 
@@ -335,26 +335,33 @@ h1 {
 .bone-left { transform: translateY(-50%) rotate(22deg); }
 .bone-right { transform: translateY(-50%) rotate(-22deg); }
 
-/* Огромные глазницы, расположенные ближе друг к другу */
+/* Новые анатомические и увеличенные глазницы черепа */
 .eye {
   position: absolute;
-  top: 65px;
-  width: 78px; /* Увеличено почти в два раза */
-  height: 78px;
-  background: #4a3c37;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  top: 55px; /* Чуть приподняли, так как они стали больше */
+  width: 90px; /* Увеличили еще сильнее */
+  height: 85px;
+  background: #3a2f2b; /* Глубокий темный цвет внутри */
+  display: grid;
+  place-items: center; /* ВСЕ элементы внутри (и огонь, и цветы) встанут строго по центру */
   overflow: hidden;
-  box-shadow: inset 0 6px 12px rgba(0,0,0,0.35);
+  box-shadow: inset 0 8px 16px rgba(0,0,0,0.5);
   transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
-/* Глаза сдвинуты к центру */
-.left-eye { left: 32px; }
-.right-eye { right: 32px; }
+/* Форма для левой глазницы: наклон и сужение к центру */
+.left-eye { 
+  left: 24px; 
+  border-radius: 42% 58% 40% 45% / 45% 55% 40% 55%;
+  transform: rotate(5deg);
+}
 
+/* Форма для правой глазницы: зеркальный наклон и сужение */
+.right-eye { 
+  right: 24px; 
+  border-radius: 58% 42% 45% 40% / 55% 45% 55% 40%;
+  transform: rotate(-5deg);
+}
 
 
 /* ==========================================
@@ -364,13 +371,14 @@ h1 {
 /* Базовые контейнеры элементов внутри глаз */
 .css-flower, .css-fire {
   position: absolute;
+  /* Центрируем сами контейнеры относительно родительской сетки place-items */
+  top: 50%;
+  left: 50%;
   width: 44px;
   height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   opacity: 0;
-  transform: scale(0);
+  /* Первое значение в transform фиксирует контейнер строго по центру глазницы, второе — отвечает за масштаб */
+  transform: translate(-50%, -50%) scale(0);
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
   pointer-events: none;
 }
@@ -380,23 +388,17 @@ h1 {
   position: relative;
 }
 
-/* Лепестки (5 штук, распределённые по кругу с шагом 72 градуса) */
+/* Лепестки (4 штуки перекрещенные) */
 .css-flower .petal {
   position: absolute;
   width: 14px;
   height: 38px;
   background: var(--accent-pink);
   border-radius: 10px;
-  /* Смещаем точку вращения в центр цветка, чтобы они крутились как надо */
-  transform-origin: center center; 
 }
-
-/* Распределяем их по кругу: 0°, 72°, 144°, 216°, 288° */
-.css-flower .petal:nth-child(1) { transform: rotate(0deg); }
-.css-flower .petal:nth-child(2) { transform: rotate(72deg); }
-.css-flower .petal:nth-child(3) { transform: rotate(144deg); }
-.css-flower .petal:nth-child(4) { transform: rotate(216deg); }
-.css-flower .petal:nth-child(5) { transform: rotate(288deg); }
+.css-flower .petal:nth-child(2) { transform: rotate(45deg); }
+.css-flower .petal:nth-child(3) { transform: rotate(90deg); }
+.css-flower .petal:nth-child(4) { transform: rotate(135deg); }
 
 /* Сердцевина цветка */
 .css-flower .core {
@@ -443,22 +445,23 @@ h1 {
    УПРАВЛЕНИЕ ЭТАПАМИ (ИНТЕРАКТИВ)
    ========================================== */
 
-/* ЭТАП 1: Мышка в зоне 280px (Цветок появляется и покачивается) */
+/* ЭТАП 1: Мышка в зоне 280px (Цветок появляется по центру и покачивается) */
 .eye.expand-pupil .css-flower {
   opacity: 1;
-  transform: scale(1);
+  /* Сохраняем центрирование translate и добавляем масштаб */
+  transform: translate(-50%, -50%) scale(1);
   animation: flowerSway 4s ease-in-out infinite alternate;
 }
 
-/* ЭТАП 2: Мышка в зоне 140px (Цветок прячется, огонь яростно горит) */
+/* ЭТАП 2: Мышка в зоне 140px (Цветок прячется, огонь горит по центру) */
 .eye.is-alert .css-flower {
   opacity: 0;
-  transform: scale(0);
+  transform: translate(-50%, -50%) scale(0);
 }
 
 .eye.is-alert .css-fire {
   opacity: 1;
-  transform: scale(1.1);
+  transform: translate(-50%, -50%) scale(1.1);
 }
 
 /* Анимация живого горения для пламени */
@@ -547,8 +550,8 @@ footer {
    ОБНОВЛЕННЫЕ АНИМАЦИИ
    ========================================== */
 @keyframes flowerSway { 
-  from { transform: rotate(-15deg); } 
-  to { transform: rotate(15deg); } 
+  from { transform: translate(-50%, -50%) rotate(-15deg) scale(1); } 
+  to { transform: translate(-50%, -50%) rotate(15deg) scale(1); } 
 }
 
 /* Эффект яростного «танцующего» пламени */
