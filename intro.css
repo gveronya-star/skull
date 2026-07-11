@@ -3,10 +3,10 @@ body {
   min-height: 100vh;
   /* Заменили фон на более темный, глубокий кофейный */
   background:
-    radial-gradient(circle at 75% 20%, rgba(140, 105, 75, 0.35), transparent 30rem),
-    radial-gradient(circle at 10% 90%, rgba(110, 80, 70, 0.35), transparent 24rem),
-    linear-gradient(135deg, #3a3028 0%, #5a4738 100%);
-  color: #fdfbf7; /* Светлый текст, чтобы читался на темном */
+    radial-gradient(circle at 75% 20%, rgba(255, 180, 150, 0.3), transparent 28rem),
+    radial-gradient(circle at 10% 90%, rgba(255, 160, 180, 0.25), transparent 24rem),
+    linear-gradient(135deg, #fdfbf7 0%, #f7f1e5 55%, #ede4d3 100%);
+  color: #3d312a; /* Темный кофейный контрастный цвет */
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
 }
