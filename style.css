@@ -67,7 +67,7 @@ body::before {
   position: absolute;
   right: -22px;
   bottom: -28px;
-  color: rgba(255, 113, 144, 0.04);
+  color: rgba(255, 113, 144, 0.07);
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(6rem, 18vw, 14rem);
   font-weight: 700;
@@ -279,7 +279,7 @@ transform: scale(1.05);
   align-items: center;
   justify-content: center;
   z-index: 2;
- transform: translateY(50px);
+ transform: translateY(60px);
 }
 
 .skull-face {
