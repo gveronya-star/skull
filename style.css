@@ -249,7 +249,7 @@ h1 {
   position: absolute;
   border: 2px solid rgba(255, 140, 117, 0.2);
   animation: slowRotateReverse 16s linear infinite;
-  transform: scale(0.95) rotate(15deg); /* Смещен относительно первого */
+  transform: scale(0.95) rotate(15deg);
 }
 
 .skull-scale {
@@ -269,13 +269,21 @@ h1 {
   animation: springFloat 5s ease-in-out infinite;
 }
 
-/* Милый округлый череп */
+/* Настоящая форма черепа с округлой головой и выраженными скулами */
 .skull-head {
   position: absolute;
-  inset: 80px 50px 50px;
+  inset: 80px 65px 75px;
   background: var(--skull-color);
-  border-radius: 50% 50% 42% 42% / 50% 50% 45% 45%;
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  /* clip-path создает сужающуюся к низу форму черепа с аккуратным подбородком */
+  clip-path: polygon(
+    25% 0%, 75% 0%, 
+    100% 20%, 100% 55%, 
+    85% 65%, 72% 70%, 
+    72% 100%, 28% 100%, 
+    28% 70%, 15% 65%, 
+    0% 55%, 0% 20%
+  );
+  border-radius: 50% 50% 20% 20% / 45% 45% 20% 20%;
 }
 
 /* Скрещенные кости */
@@ -291,114 +299,108 @@ h1 {
   top: 50%;
   left: 15%;
   width: 70%;
-  height: 24px;
+  height: 20px;
   background: #fff6f2;
-  border-radius: 12px;
+  border-radius: 10px;
 }
 
-/* Создаем набалдашники костей с помощью псевдоэлементов */
 .bone::before, .bone::after {
   content: '';
   position: absolute;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   background: #fff6f2;
   border-radius: 50%;
 }
-.bone::before { left: -16px; top: -10px; box-shadow: 0 16px 0 #fff6f2; }
-.bone::after { right: -16px; top: -10px; box-shadow: 0 16px 0 #fff6f2; }
+.bone::before { left: -14px; top: -10px; box-shadow: 0 14px 0 #fff6f2; }
+.bone::after { right: -14px; top: -10px; box-shadow: 0 14px 0 #fff6f2; }
 
 .bone-left { transform: translateY(-50%) rotate(32deg); }
 .bone-right { transform: translateY(-50%) rotate(-32deg); }
 
-/* Глазницы и 3 этапа анимации */
+/* Характерные угловато-округлые глазницы черепа */
 .eye {
   position: absolute;
-  top: 75px;
-  width: 58px;
-  height: 58px;
-  background: #4a3c37; /* Базово пустые глазницы */
-  border-radius: 50%;
+  top: 40px;
+  width: 52px;
+  height: 48px;
+  background: #4a3c37;
+  /* Имитируем зловеще-милые глазницы: сверху чуть прямее, к низу сужаются */
+  border-radius: 42% 42% 50% 50% / 35% 35% 65% 65%;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  box-shadow: inset 0 4px 8px rgba(0,0,0,0.3);
+  box-shadow: inset 0 4px 8px rgba(0,0,0,0.35);
   transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
-.left-eye { left: 42px; }
-.right-eye { right: 42px; }
+.left-eye { left: 24px; transform: rotate(-5deg); }
+.right-eye { right: 24px; transform: rotate(5deg); }
 
-/* Элементы внутри глазниц изначально скрыты */
 .flower, .fire {
   position: absolute;
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   opacity: 0;
   transform: scale(0);
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
   pointer-events: none;
 }
 
-/* ЭТАП 1: Мышка приближается (Цветочки распускаются) */
-.eye.expand-pupil {
-  background: #5a4b45;
-}
+/* ЭТАПЫ АНИМАЦИИ ГЛАЗ */
+.eye.expand-pupil { background: #5a4b45; }
 .eye.expand-pupil .flower {
   opacity: 1;
   transform: scale(1) rotate(15deg);
   animation: flowerSway 3s ease-in-out infinite alternate;
 }
 
-/* ЭТАП 2: Курсор максимально близко (Огонь!) */
 .eye.is-alert {
   background: #231916;
   box-shadow: 0 0 20px rgba(255, 107, 139, 0.6), inset 0 2px 5px rgba(0,0,0,0.5);
 }
-.eye.is-alert .flower {
-  opacity: 0;
-  transform: scale(0);
-}
+.eye.is-alert .flower { opacity: 0; transform: scale(0); }
 .eye.is-alert .fire {
   opacity: 1;
   transform: scale(1.1);
   animation: fireFlicker 0.2s linear infinite alternate;
 }
 
-/* Носик и челюсть черепа */
+/* Округлый, аккуратный носик-капелька / перевернутое сердечко */
 .skull-nose {
   position: absolute;
-  bottom: 85px;
+  top: 92px;
   left: 50%;
   transform: translateX(-50%);
-  width: 18px;
-  height: 16px;
+  width: 16px;
+  height: 18px;
   background: #4a3c37;
-  clip-path: polygon(50% 100%, 0% 20%, 30% 0%, 50% 30%, 70% 0%, 100% 20%); /* Милая перевернутая форма сердечка */
+  border-radius: 50% 50% 40% 40% / 40% 40% 60% 60%;
+  clip-path: polygon(50% 100%, 0% 30%, 25% 0%, 50% 40%, 75% 0%, 100% 30%);
 }
 
+/* Стильные зубки на нижней зауженной части */
 .skull-jaw {
   position: absolute;
-  bottom: -15px;
+  bottom: 0px;
   left: 50%;
   transform: translateX(-50%);
-  width: 90px;
-  height: 38px;
-  background: var(--skull-color);
-  border-radius: 0 0 16px 16px;
+  width: 44% !important; /* Встает ровно на анатомическую ширину челюсти */
+  height: 25px;
   display: flex;
-  justify-content: center;
-  gap: 4px;
-  padding-top: 5px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 0 4px;
 }
 
 .tooth {
-  width: 12px;
-  height: 16px;
-  background: #fff6f2;
-  border-radius: 0 0 4px 4px;
-  border: 1px solid rgba(74, 60, 55, 0.1);
+  width: 8px;
+  height: 14px;
+  background: #ffffff;
+  /* Скругляем зубки сверху и снизу для эффекта мультяшного стыка */
+  border-radius: 4px;
+  border-bottom: 2px solid #e0d5d0;
+  box-shadow: inset 0 -2px 3px rgba(0,0,0,0.05);
 }
 
 /* Секретное сообщение */
