@@ -145,7 +145,7 @@ body::before {
   position: absolute;
   right: -22px;
   bottom: -28px;
-  color: rgba(255, 158, 138, 0.05);
+  color: rgba(255, 158, 138, 0.07);
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(6rem, 18vw, 14rem);
   font-weight: 700;
