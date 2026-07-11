@@ -118,19 +118,22 @@ body::before {
 }
 
 .mission-card {
-  position: relative;
-  box-sizing: border-box;
+  width: 100%;
   height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
   overflow: hidden;
-  border: 1px solid rgba(255, 140, 117, 0.3);
+  border: 1px solid rgba(255, 158, 138, 0.3);
   border-radius: 34px;
   /* Тот самый "персиково-молочный" фон из первого файла */
   background: linear-gradient(145deg, rgba(255, 235, 225, 0.9), rgba(255, 215, 215, 0.94));
   box-shadow: 0 30px 80px rgba(58, 46, 43, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+
+  
   padding: clamp(24px, 4vw, 54px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+
 }
 
 .mission-card::after {
