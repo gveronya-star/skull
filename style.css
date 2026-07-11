@@ -15,17 +15,15 @@ body {
   margin: 0;
   min-height: 100vh;
   overflow-x: hidden;
-  /* Темный, глубокий цвет текста, чтобы он читался на новом фоне */
+  /* Светлый текст для темного фона */
   color: #e5dcd6; 
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   
-  /* Темная, приглушенная палитра */
+  /* Тот самый глубокий кофейный фон */
   background:
-    /* Мягкие "туманные" пятна (уменьшили прозрачность, чтобы они не отвлекали) */
-    radial-gradient(circle at 75% 20%, rgba(255, 140, 117, 0.08), transparent 30rem),
-    radial-gradient(circle at 10% 90%, rgba(255, 113, 144, 0.06), transparent 25rem),
-    /* Основной градиент: от темно-кофейного к глубокому серо-коричневому */
+    radial-gradient(circle at 75% 20%, rgba(80, 60, 50, 0.4), transparent 30rem),
+    radial-gradient(circle at 10% 90%, rgba(60, 40, 50, 0.4), transparent 24rem),
     linear-gradient(135deg, #2a2220 0%, #3d312a 100%);
 }
 
@@ -34,7 +32,8 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background-image: linear-gradient(rgba(0,0,0,0.012) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.012) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), 
+                    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
   background-size: 54px 54px;
   mask-image: radial-gradient(circle at center, black 0%, transparent 78%);
 }
