@@ -122,7 +122,7 @@ primaryButton.addEventListener('click', () => {
 });
 
 secondaryButton.addEventListener('click', () => {
-  showStatus('Mission aborted.<br><br>Linka has noticed your failure.<br><br>Consequences are currently being evaluated.', 4000);
+  showStatus('Error: Audacity levels exceeded.<br><br>The Creator is officially unamused, and the Supreme Skull Council is deeply offended.<br><br>Prepare for imminent dramatic sighs and minor retaliatory pouting.', 5000);
 });
 
 function showSecretMessage() {
