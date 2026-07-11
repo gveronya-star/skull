@@ -1,0 +1,162 @@
+body {
+  margin: 0;
+  /* Мягкий фон цвета топлёного молока с нежными персиково-розовыми свечениями */
+  background:
+    radial-gradient(circle at 75% 20%, rgba(255, 180, 150, 0.3), transparent 28rem),
+    radial-gradient(circle at 10% 90%, rgba(255, 160, 180, 0.25), transparent 24rem),
+    linear-gradient(135deg, #fdfbf7 0%, #f7f1e5 55%, #ede4d3 100%);
+  color: #3d312a; /* Темный кофейный контрастный цвет */
+  font-family: system-ui, sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(0,0,0,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.015) 1px, transparent 1px);
+  background-size: 54px 54px;
+  mask-image: radial-gradient(circle at center, black 0%, transparent 78%);
+}
+
+.intro-screen {
+  width: min(1120px, calc(100% - 32px));
+  height: 100vh;
+  margin: 0 auto;
+  padding: 34px 0 24px;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+ 
+.intro-content {
+  width: min(600px, 90%);
+  transform: translateY(-40px);
+}
+
+.intro-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #c07a68;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.intro-content h1 {
+  margin: 0 0 25px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1.1;
+  color: #2a1f1a;
+  text-shadow: 0 4px 20px rgba(255, 150, 130, 0.2);
+}
+
+.intro-content p {
+  line-height: 1.7;
+  color: #5c4b41;
+}
+
+.tiny-secret {
+  margin-top: 60px;
+  font-size: 11px;
+  color: #a39085;
+  letter-spacing: 2px;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 16px 30px;
+  border-radius: 20px;
+  /* Нежно-персиковый весенний градиент */
+  background: linear-gradient(135deg, #ffcaa6, #ff9e8a);
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 25px rgba(255, 158, 138, 0.35);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 32px rgba(255, 158, 138, 0.5);
+}
+
+.mission-card {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 158, 138, 0.3);
+  border-radius: 34px;
+  /* Мягкий розово-персиковый фон с эффектом стекла */
+  background: linear-gradient(145deg, rgba(255, 240, 235, 0.85), rgba(255, 225, 225, 0.9));
+  box-shadow: 0 30px 80px rgba(92, 75, 65, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  padding: clamp(24px, 4vw, 54px);
+}
+
+.mission-card::after {
+  content: "RSIS";
+  position: absolute;
+  right: -22px;
+  bottom: -28px;
+  color: rgba(255, 158, 138, 0.05);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(6rem, 18vw, 14rem);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+  body {
+    background:
+      radial-gradient(circle at 50% 15%, rgba(255, 180, 150, 0.25), transparent 60%), 
+      radial-gradient(circle at 10% 85%, rgba(255, 160, 180, 0.2), transparent 50%),  
+      linear-gradient(135deg, #fdfbf7 0%, #f7f1e5 55%, #ede4d3 100%) !important;
+  }
+  
+  .intro-screen {
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding: 40px 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .mission-card {
+    width: 90% !important; 
+    max-width: 640px !important;
+    height: auto !important;
+    padding: clamp(30px, 6vw, 46px) 20px !important;
+    margin: 0 auto !important;
+  }
+
+  .mission-card::after {
+    font-size: clamp(6rem, 16vw, 9rem) !important; 
+    right: -10px !important; 
+    bottom: -15px !important;
+  }
+  
+  .intro-content {
+    transform: translateY(0) !important;
+    width: 100% !important;
+  }
+}
+
+@media (max-height: 780px) and (min-width: 1025px) {
+  .intro-content { transform: translateY(0) !important; }
+  .intro-content h1 { font-size: clamp(1.8rem, 4vw, 2.8rem) !important; margin-bottom: 12px !important; }
+  .intro-label { margin-bottom: 12px !important; }
+  .button { margin-top: 15px !important; padding: 12px 26px !important; }
+  .tiny-secret { margin-top: 20px !important; }
+}
