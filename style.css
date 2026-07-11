@@ -22,9 +22,11 @@ body {
   
   /* Тот самый глубокий кофейный фон */
   background:
-    radial-gradient(circle at 75% 20%, rgba(80, 60, 50, 0.4), transparent 30rem),
-    radial-gradient(circle at 10% 90%, rgba(60, 40, 50, 0.4), transparent 24rem),
+    radial-gradient(circle at 75% 20%, rgba(140, 105, 75, 0.35), transparent 30rem),
+    radial-gradient(circle at 10% 90%, rgba(110, 80, 70, 0.35), transparent 24rem),
     linear-gradient(135deg, #3a3028 0%, #5a4738 100%);
+
+ 
 }
 
 body::before {
