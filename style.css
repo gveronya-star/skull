@@ -174,13 +174,15 @@ h1 {
   cursor: pointer;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
+  font-size: 1.05rem;      /* Было около 0.9-1rem */
+  letter-spacing: 0.08em;  /* Добавляем разреженность */
   transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
 }
 
 .primary-button {
-  color: #ffffff;
-  background: linear-gradient(135deg, #ff9e8a, #ff6b8b);
-  box-shadow: 0 10px 25px rgba(255, 107, 139, 0.35);
+ color: var(--text-dark);
+background: linear-gradient(135deg, #ffc5b0, #ff9ba8);
+  box-shadow: 0 10px 25px rgba(255, 107, 139, 0.2);
 }
 
 .primary-button:hover { 
