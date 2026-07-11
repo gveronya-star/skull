@@ -6,7 +6,8 @@ body {
     radial-gradient(circle at 10% 90%, rgba(255, 160, 180, 0.25), transparent 24rem),
     linear-gradient(135deg, #fdfbf7 0%, #f7f1e5 55%, #ede4d3 100%);
   color: #3d312a; /* Темный кофейный контрастный цвет */
-  font-family: system-ui, sans-serif;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
 }
 
 body::before {
@@ -42,7 +43,9 @@ body::before {
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: #c07a68;
+  font-family: 'Cinzel Decorative', serif;
   font-weight: 700;
+  letter-spacing: 1px;
   margin-bottom: 25px;
 }
 
@@ -76,6 +79,7 @@ body::before {
   background: linear-gradient(135deg, #ffcaa6, #ff9e8a);
   color: #ffffff;
   text-decoration: none;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   text-shadow: 0 1px 2px rgba(0,0,0,0.1);
   box-shadow: 0 10px 25px rgba(255, 158, 138, 0.35);
