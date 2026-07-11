@@ -18,10 +18,14 @@ body {
 color: var(--text-dark);
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  background:
+ /* background:
     radial-gradient(circle at 75% 20%, rgba(255, 140, 117, 0.22), transparent 28rem),
     radial-gradient(circle at 10% 90%, rgba(255, 113, 144, 0.18), transparent 24rem),
-    linear-gradient(135deg, var(--bg-cream) 0%, #f6eee0 55%, #ede2ce 100%);
+    linear-gradient(135deg, var(--bg-cream) 0%, #f6eee0 55%, #ede2ce 100%);*/
+  background:
+  radial-gradient(circle at 75% 20%, rgba(220, 160, 110, 0.18), transparent 28rem),
+  radial-gradient(circle at 10% 90%, rgba(190, 140, 110, 0.12), transparent 24rem),
+  linear-gradient(135deg, #efe2ce 0%, #e5d2b8 55%, #d8c19f 100%);
 }
 
 body::before {
