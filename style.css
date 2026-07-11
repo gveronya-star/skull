@@ -242,7 +242,7 @@ h1 {
   content: "";
   position: absolute;
   inset: 10px;
-  border: 2px solid rgba(255, 113, 144, 0.25);
+  border: 1.5px solid rgba(255, 113, 144, 0.2);
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
 
@@ -256,7 +256,7 @@ h1 {
 }
 
 .hex-two::before {
-  border-color: rgba(255, 140, 117, 0.25);
+  border-color: rgba(255, 140, 117, 0.2);
 }
 
 .skull-scale {
@@ -273,53 +273,51 @@ h1 {
   position: relative;
   width: 100%;
   height: 100%;
-  filter: drop-shadow(0 20px 40px rgba(92, 75, 65, 0.12));
+  filter: drop-shadow(0 14px 28px rgba(92, 75, 65, 0.06));
   animation: springFloat 5s ease-in-out infinite;
 }
 
+/* Форма кошачьего черепка по картинке */
 .skull-head {
   position: absolute;
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 230px;
-  height: 230px;
+  width: 220px;
+  height: 220px;
   background: var(--skull-color);
-  border-radius: 50% 50% 40% 40% / 50% 50% 30% 30%;
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 
-    inset 0 -15px 30px rgba(92, 75, 65, 0.05),
-    inset -10px 0 20px rgba(92, 75, 65, 0.03),
-    inset 10px 0 20px rgba(92, 75, 65, 0.03);
+  /* clip-path формирует идеальный силуэт с кошачьими ушками сверху и округлыми скулами */
+  clip-path: polygon(
+    50% 22%, 72% 3%, 86% 25%, 95% 45%, 95% 68%, 82% 88%, 70% 88%, 
+    62% 96%, 50% 88%, 38% 96%, 30% 88%, 18% 88%, 5% 68%, 5% 45%, 14% 25%, 28% 3%
+  );
 }
 
 /* ==========================================
-   ИСПРАВЛЕННАЯ ГЕОМЕТРИЯ ГЛАЗНИЦ (УЛЬТРА-КАВАЙ)
+   ИСПРАВЛЕННАЯ ГЕОМЕТРИЯ ГЛАЗНИЦ (ПРОВАЛЫ)
    ========================================== */
 .eye {
   position: absolute;
-  top: 52px;
-  width: 88px;
-  height: 84px;
-  background: #3a2f2b;
+  top: 92px; /* Выровняли по высоте кошачьей мордочки */
+  width: 64px;
+  height: 64px;
+  background: var(--text-dark); /* Глубокий кофейный вместо черного */
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: inset 0 8px 16px rgba(0,0,0,0.45);
+  border-radius: 50%;
+  /* Внутренняя тень создает эффект объемного провала */
+  box-shadow: inset 2px 6px 12px rgba(0, 0, 0, 0.3);
   transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
   z-index: 5;
 }
 
 .left-eye { 
-  left: 26px; 
-  border-radius: 65% 45% 45% 60% / 65% 45% 45% 65%;
-  transform: rotate(8deg);
+  left: 36px; 
 }
 
 .right-eye { 
-  right: 26px; 
-  border-radius: 45% 65% 60% 45% / 45% 65% 65% 45%;
-  transform: rotate(-8deg);
+  right: 36px; 
 }
 
 /* ==========================================
@@ -327,8 +325,8 @@ h1 {
    ========================================== */
 .css-flower, .css-fire {
   position: absolute;
-  width: 44px;
-  height: 44px;
+  width: 36px;
+  height: 36px;
   opacity: 0;
   transform: scale(0);
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
@@ -343,10 +341,10 @@ h1 {
 
 .css-flower .petal {
   position: absolute;
-  width: 14px;
-  height: 38px;
+  width: 12px;
+  height: 32px;
   background: var(--accent-pink);
-  border-radius: 12px;
+  border-radius: 10px;
 }
 .css-flower .petal:nth-child(2) { transform: rotate(45deg); }
 .css-flower .petal:nth-child(3) { transform: rotate(90deg); }
@@ -354,8 +352,8 @@ h1 {
 
 .css-flower .core {
   position: absolute;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   background: #fff0aa;
   border-radius: 50%;
   z-index: 2;
@@ -371,8 +369,8 @@ h1 {
 .flame-back {
   position: absolute;
   bottom: 4px;
-  width: 32px;
-  height: 38px;
+  width: 26px;
+  height: 32px;
   background: linear-gradient(to top, #ff5252, #ff7a45);
   border-radius: 50% 50% 35% 35% / 60% 60% 40% 40%;
   transform-origin: bottom center;
@@ -381,8 +379,8 @@ h1 {
 .flame-core {
   position: absolute;
   bottom: 6px;
-  width: 16px;
-  height: 22px;
+  width: 14px;
+  height: 18px;
   background: linear-gradient(to top, #ffba52, #fff0aa);
   border-radius: 50% 50% 35% 35% / 60% 60% 40% 40%;
   transform-origin: bottom center;
@@ -417,51 +415,32 @@ h1 {
 }
 
 /* ==========================================
-   ОБНОВЛЁННЫЕ ДЕТАЛИ ЛИЦА (НОС И ЧЕЛЮСТЬ)
+   ОБНОВЛЁННЫЕ ДЕТАЛИ ЛИЦА (НОСИК И ЗУБКИ)
    ========================================== */
+/* Маленький аккуратный носик-сердечко как на кошачьем референсе */
 .skull-nose {
   position: absolute;
-  bottom: 62px;
+  bottom: 50px;
   left: 50%;
   transform: translateX(-50%);
-  width: 18px;
-  height: 16px;
-  background: #4a3c37;
-  clip-path: polygon(50% 100%, 0% 15%, 15% 0%, 85% 0%, 100% 15%);
+  width: 16px;
+  height: 12px;
+  background: var(--text-dark);
+  clip-path: polygon(50% 100%, 0% 20%, 20% 0%, 50% 30%, 80% 0%, 100% 20%);
 }
 
+/* Нижние контуры зубок теперь встроены прямо в clip-path верхней головы, */
+/* поэтому пустой блок jaw нам больше не нужен, скрываем его, чтобы ничего не ломалось */
 .skull-jaw {
-  position: absolute;
-  bottom: -28px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 95px;
-  height: 40px;
-  background: var(--skull-color);
-  border-radius: 0 0 24px 24px;
-  display: flex;
-  justify-content: center;
-  gap: 4px;
-  padding-top: 2px;
-  box-shadow: 0 10px 20px rgba(92, 75, 65, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-top: none;
-}
-
-.tooth {
-  width: 12px;
-  height: 14px;
-  background: #fff8f5;
-  border-radius: 0 0 6px 6px;
-  border: 1px solid rgba(74, 60, 55, 0.06);
+  display: none;
 }
 
 /* ==========================================
-   ОБЪЁМНЫЕ СКРЕЩЕННЫЕ КОСТИ (СТРОГО ПОД ЧЕРЕПОМ)
+   АККУРАТНЫЕ СКРЕЩЕННЫЕ КОСТИ (АККУРАТНЫЙ СТИЛЬ)
    ========================================== */
 .bones-container {
   position: absolute;
-  bottom: 30px;
+  bottom: 40px;
   left: 0;
   width: 100%;
   height: 80px;
@@ -471,27 +450,25 @@ h1 {
 .bone {
   position: absolute;
   top: 50%;
-  left: 5%;
-  width: 90%;
-  height: 28px;
-  background: linear-gradient(to bottom, #ffffff, #fff2ec);
-  border-radius: 14px;
-  box-shadow: 0 6px 12px rgba(92, 75, 65, 0.08);
+  left: 10%;
+  width: 80%;
+  height: 18px;
+  background: var(--skull-color);
 }
 
 .bone::before, .bone::after {
   content: '';
   position: absolute;
-  width: 36px;
-  height: 36px;
-  background: linear-gradient(135deg, #ffffff, #ffece3);
+  width: 26px;
+  height: 26px;
+  background: var(--skull-color);
   border-radius: 50%;
 }
-.bone::before { left: -16px; top: -14px; box-shadow: 0 20px 0 #ffece3; }
-.bone::after { right: -16px; top: -14px; box-shadow: 0 20px 0 #ffece3; }
+.bone::before { left: -12px; top: -10px; box-shadow: 0 16px 0 var(--skull-color); }
+.bone::after { right: -12px; top: -10px; box-shadow: 0 16px 0 var(--skull-color); }
 
-.bone-left { transform: translateY(-50%) rotate(24deg); }
-.bone-right { transform: translateY(-50%) rotate(-24deg); }
+.bone-left { transform: translateY(-50%) rotate(26deg); }
+.bone-right { transform: translateY(-50%) rotate(-26deg); }
 
 /* ==========================================
    ПРОЧИЕ ЭЛЕМЕНТЫ И ИНТЕРФЕЙС
@@ -522,7 +499,7 @@ footer {
 }
 
 /* ==========================================
-   АНИМАЦИИ (БЕЗ ДУБЛИКАТОВ)
+   АНИМАЦИИ
    ========================================== */
 @keyframes springFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 @keyframes slowRotate { to { transform: rotate(360deg); } }
