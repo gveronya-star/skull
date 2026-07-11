@@ -79,10 +79,10 @@ body::before {
   border: 1px solid rgba(255, 113, 144, 0.4);
   border-radius: 999px;
   color: #e04b6d;
-  font-size: 0.72rem;
-  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.75rem;
+  font-family: 'Quicksand', sans-serif; /* Поменяли на чистый округлый шрифт */
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 0.15em; /* Добавили аккуратную воздушную разрядку */
   text-transform: uppercase;
   background: rgba(255, 113, 144, 0.06);
 }
@@ -340,14 +340,13 @@ h1 {
    ИСПРАВЛЕННАЯ ГЕОМЕТРИЯ ГЛАЗНИЦ И СЦЕНЫ
    ========================================== */
 
-/* Новые кавайные увеличенные глазницы черепа */
+/* Увеличенные каплевидные глазницы черепа */
 .eye {
   position: absolute;
   top: 55px;
   width: 90px;
   height: 85px;
   background: #3a2f2b;
-  /* Используем флекс, чтобы намертво запереть цветы/огни по центру без багов */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -356,18 +355,18 @@ h1 {
   transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
-/* Форма для левой глазницы: кавайная, слегка скруглённая, наклон к центру */
+/* Левая глазница: сужение к центру (вправо), расширение наружу */
 .left-eye { 
   left: 24px; 
-  border-radius: 40% 50% 35% 45%;
-  transform: rotate(3deg);
+  border-radius: 50% 35% 40% 55% / 55% 35% 40% 55%;
+  transform: rotate(6deg);
 }
 
-/* Форма для правой глазницы: зеркальная левой */
+/* Правая глазница: сужение к центру (влево), расширение наружу */
 .right-eye { 
   right: 24px; 
-  border-radius: 50% 40% 45% 35%;
-  transform: rotate(-3deg);
+  border-radius: 35% 50% 55% 40% / 35% 55% 55% 40%;
+  transform: rotate(-6deg);
 }
 
 
@@ -552,9 +551,9 @@ footer {
 /* ==========================================
    ОБНОВЛЕННЫЕ АНИМАЦИИ
    ========================================== */
-@keyframes flowerSway { 
-  from { transform: translate(-50%, -50%) rotate(-15deg) scale(1); } 
-  to { transform: translate(-50%, -50%) rotate(15deg) scale(1); } 
+@keyframes flowerSway {  
+  from { transform: rotate(-15deg) scale(1); }  
+  to { transform: rotate(15deg) scale(1); }  
 }
 
 /* Эффект яростного «танцующего» пламени */
@@ -575,8 +574,10 @@ footer {
 @keyframes cssFireBurnInner {
   0% { transform: scaleX(0.9) scaleY(0.9); }
   100% { transform: scaleX(1.1) scaleY(1.1) translateY(-1px); }
+}
 
 @keyframes approvalPulse { 0% { opacity: 0; } 100% { opacity: 1; } }
+
 
 /* Адаптивность медиа-запросов */
 @media (max-width: 750px) {
