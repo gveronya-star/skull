@@ -96,11 +96,17 @@ body::before {
   border-radius: 20px;
   /* Нежно-персиковый весенний градиент */
   background: linear-gradient(135deg, #ffcaa6, #ff9e8a);
-  color: #ffffff;
+  
+  /* --- НОВЫЕ НАСТРОЙКИ ТЕКСТА --- */
+  color: #3d312a; /* Глубокий кофейный цвет для отличной читаемости */
+  font-size: 1.15rem; /* Сделали буквы крупнее (примерно 18-19px) */
+  letter-spacing: -0.02em; /* Чуть сблизили буквы (отрицательное значение) */
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4); /* Светлый блик вместо тёмной тени */
+  /* ------------------------------ */
+  
   text-decoration: none;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
   box-shadow: 0 10px 25px rgba(255, 158, 138, 0.35);
   transition: transform 220ms ease, box-shadow 220ms ease;
 }
