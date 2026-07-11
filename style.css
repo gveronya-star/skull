@@ -198,12 +198,12 @@ background: linear-gradient(135deg, #ffc5b0, #ff9ba8);
   border: 1px solid rgba(255, 140, 117, 0.5);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.03), 0 0 18px rgba(255,140,117,0.15);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03), 0 0 18px rgba(255,140,117,0.3);
 }
 
 .evasive-button:hover {
   background: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.05), 0 0 25px rgba(255,140,117,0.25);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.05), 0 0 25px rgba(255,140,117,0.5);
 }
 
 .evasive-button.floating {
@@ -478,8 +478,8 @@ clip-path: polygon(
   border: 1px solid rgba(255, 113, 144, 0.4);
   border-radius: 18px;
   color: #3a2e2b;
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 10px 30px rgba(255, 113, 144, 0.15);
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 10px 30px rgba(255, 113, 144, 0.3);
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 260ms ease, transform 260ms ease;
