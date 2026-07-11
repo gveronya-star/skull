@@ -186,14 +186,14 @@ h1 {
 }
 
 .primary-button {
- color: var(--text-dark);
-background: linear-gradient(135deg, #ffc5b0, #ff9ba8);
-  box-shadow: 0 10px 25px rgba(255, 107, 139, 0.2);
+  color: var(--text-dark);
+  background: linear-gradient(135deg, #ffcaa6, #ff9e8a);
+  box-shadow: 0 10px 25px rgba(255, 158, 138, 0.35);
 }
 
 .primary-button:hover { 
   transform: translateY(-3px); 
-  box-shadow: 0 14px 32px rgba(255, 107, 139, 0.5); 
+  box-shadow: 0 15px 32px rgba(255, 158, 138, 0.5); 
 }
 
 .evasive-button {
