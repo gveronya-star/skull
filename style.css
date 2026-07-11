@@ -435,40 +435,7 @@ h1 {
   display: none;
 }
 
-/* ==========================================
-   АККУРАТНЫЕ СКРЕЩЕННЫЕ КОСТИ (АККУРАТНЫЙ СТИЛЬ)
-   ========================================== */
-.bones-container {
-  position: absolute;
-  bottom: 40px;
-  left: 0;
-  width: 100%;
-  height: 80px;
-  z-index: -1;
-}
 
-.bone {
-  position: absolute;
-  top: 50%;
-  left: 10%;
-  width: 80%;
-  height: 18px;
-  background: var(--skull-color);
-}
-
-.bone::before, .bone::after {
-  content: '';
-  position: absolute;
-  width: 26px;
-  height: 26px;
-  background: var(--skull-color);
-  border-radius: 50%;
-}
-.bone::before { left: -12px; top: -10px; box-shadow: 0 16px 0 var(--skull-color); }
-.bone::after { right: -12px; top: -10px; box-shadow: 0 16px 0 var(--skull-color); }
-
-.bone-left { transform: translateY(-50%) rotate(26deg); }
-.bone-right { transform: translateY(-50%) rotate(-26deg); }
 
 /* ==========================================
    ПРОЧИЕ ЭЛЕМЕНТЫ И ИНТЕРФЕЙС
