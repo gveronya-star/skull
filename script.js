@@ -31,7 +31,7 @@ function showStatus(message, duration = 1500) {
   }, duration);
 }
 
-function trackEyesInteraction(event) {
+/*function trackEyesInteraction(event) {
   let isNearFlowerZone = false;
   let isNearFireZone = false;
 
@@ -66,7 +66,25 @@ function trackEyesInteraction(event) {
     eyes.forEach((e) => e.classList.remove('is-alert'));
     secretMessage.classList.remove('visible');
   }
+}*/
+function trackEyesInteraction(event) {
+  eyes.forEach((eye) => {
+    const rect = eye.getBoundingClientRect();
+    const eyeCenterX = rect.left + rect.width / 2;
+    const eyeCenterY = rect.top + rect.height / 2;
+    const mouseDistance = Math.hypot(event.clientX - eyeCenterX, event.clientY - eyeCenterY);
+
+    // Теперь включаем только огонь
+    if (mouseDistance < 140) {
+      eye.classList.add('is-alert');
+      secretMessage.classList.add('visible');
+    } else {
+      eye.classList.remove('is-alert');
+      secretMessage.classList.remove('visible');
+    }
+  });
 }
+
 
 function moveEvasiveButton() {
   evasiveAttempts += 1;
