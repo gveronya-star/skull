@@ -22,10 +22,10 @@ color: var(--text-dark);
     radial-gradient(circle at 75% 20%, rgba(255, 140, 117, 0.22), transparent 28rem),
     radial-gradient(circle at 10% 90%, rgba(255, 113, 144, 0.18), transparent 24rem),
     linear-gradient(135deg, var(--bg-cream) 0%, #f6eee0 55%, #ede2ce 100%);*/
-  background:
-  radial-gradient(circle at 75% 20%, rgba(220, 160, 110, 0.18), transparent 28rem),
-  radial-gradient(circle at 10% 90%, rgba(190, 140, 110, 0.12), transparent 24rem),
-  linear-gradient(135deg, #efe2ce 0%, #e5d2b8 55%, #d8c19f 100%);
+background:
+    radial-gradient(circle at 75% 20%, rgba(255, 140, 117, 0.22), transparent 28rem),
+    radial-gradient(circle at 10% 90%, rgba(255, 113, 144, 0.18), transparent 24rem),
+    linear-gradient(135deg, #e6d5c8 0%, #dfcdc0 55%, #d3bbaa 100%);
 }
 
 body::before {
@@ -142,7 +142,7 @@ h1 {
   border: 1px solid var(--accent-orange);
   border-radius: 22px;
   color: #fff;
-  background: rgba(58, 46, 43, 0.96);
+  background: rgba(58, 46, 43, 0.7);
   box-shadow: 0 15px 40px rgba(58, 46, 43, 0.2);
   text-align: center;
   font-weight: 500;
@@ -483,7 +483,7 @@ clip-path: polygon(
   border: 1px solid var(--accent-orange);
   border-radius: 18px;
   color: #fff;
-  background: rgba(58, 46, 43, 0.96);
+  background: rgba(58, 46, 43, 0.7);
   box-shadow: 0 15px 40px rgba(58, 46, 43, 0.2);
   opacity: 0;
   transform: translateY(16px);
