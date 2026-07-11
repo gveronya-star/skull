@@ -2,10 +2,14 @@ body {
   margin: 0;
   min-height: 100vh;
   /* Заменили фон на более темный, глубокий кофейный */
-  background:
+  /*background:
     radial-gradient(circle at 75% 20%, rgba(255, 180, 150, 0.3), transparent 28rem),
     radial-gradient(circle at 10% 90%, rgba(255, 160, 180, 0.25), transparent 24rem),
-    linear-gradient(135deg, #fdfbf7 0%, #f7f1e5 55%, #ede4d3 100%);
+    linear-gradient(135deg, #fdfbf7 0%, #f7f1e5 55%, #ede4d3 100%);*/
+  background:
+  radial-gradient(circle at 75% 20%, rgba(220, 160, 110, 0.18), transparent 28rem),
+  radial-gradient(circle at 10% 90%, rgba(190, 140, 110, 0.12), transparent 24rem),
+  linear-gradient(135deg, #efe2ce 0%, #e5d2b8 55%, #d8c19f 100%);
   color: #3d312a; /* Темный кофейный контрастный цвет */
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
