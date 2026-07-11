@@ -12,11 +12,11 @@ let canMove = true;
 let statusTimeout;
 
 const evasiveWarnings = [
-  'Are you sure?',
-  'Linka is watching.',
-  'This decision will be remembered.',
-  'Do not make a mistake.',
-  'Think again'
+  'Resistance is adorable, but futile.',
+  'The Creator is waiting.',
+  'Your refusal has been logged as treason.',
+  'Are you trying to hurt a cute skull\'s feelings?',
+  'Think again, mortal.'
 ];
 
 function showStatus(message, duration = 1500) {
