@@ -351,14 +351,122 @@ h1 {
 .left-eye { left: 32px; }
 .right-eye { right: 32px; }
 
-.flower, .fire {
+
+
+/* ==========================================
+   CSSОТРИСОВКА ЦВЕТКА И АНИМИРОВАННОГО ОГНЯ
+   ========================================== */
+
+/* Базовые контейнеры элементов внутри глаз */
+.css-flower, .css-fire {
   position: absolute;
-  font-size: 2.3rem; /* Чуть крупнее под стать глазам */
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   opacity: 0;
   transform: scale(0);
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
   pointer-events: none;
 }
+
+/* --- СТИЛИ ДЛЯ ЦВЕТКА --- */
+.css-flower {
+  position: relative;
+}
+
+/* Лепестки (5 штук, распределённые по кругу с шагом 72 градуса) */
+.css-flower .petal {
+  position: absolute;
+  width: 14px;
+  height: 38px;
+  background: var(--accent-pink);
+  border-radius: 10px;
+  /* Смещаем точку вращения в центр цветка, чтобы они крутились как надо */
+  transform-origin: center center; 
+}
+
+/* Распределяем их по кругу: 0°, 72°, 144°, 216°, 288° */
+.css-flower .petal:nth-child(1) { transform: rotate(0deg); }
+.css-flower .petal:nth-child(2) { transform: rotate(72deg); }
+.css-flower .petal:nth-child(3) { transform: rotate(144deg); }
+.css-flower .petal:nth-child(4) { transform: rotate(216deg); }
+.css-flower .petal:nth-child(5) { transform: rotate(288deg); }
+
+/* Сердцевина цветка */
+.css-flower .core {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: #fff0aa;
+  border-radius: 50%;
+  z-index: 2;
+  box-shadow: 0 0 5px rgba(255, 240, 170, 0.5);
+}
+
+/* --- СТИЛИ ДЛЯ ОГНЯ --- */
+.css-fire {
+  position: relative;
+}
+
+/* Внешнее пламя */
+.flame-back {
+  position: absolute;
+  bottom: 4px;
+  width: 28px;
+  height: 34px;
+  background: linear-gradient(to top, #ff5252, #ff7a45);
+  /* Хитрая CSS-геометрия капли огня */
+  border-radius: 50% 50% 35% 35% / 60% 60% 40% 40%;
+  transform-origin: bottom center;
+}
+
+/* Внутренний горячий центр пламени */
+.flame-core {
+  position: absolute;
+  bottom: 6px;
+  width: 14px;
+  height: 20px;
+  background: linear-gradient(to top, #ffba52, #fff0aa);
+  border-radius: 50% 50% 35% 35% / 60% 60% 40% 40%;
+  transform-origin: bottom center;
+  z-index: 2;
+}
+
+
+/* ==========================================
+   УПРАВЛЕНИЕ ЭТАПАМИ (ИНТЕРАКТИВ)
+   ========================================== */
+
+/* ЭТАП 1: Мышка в зоне 280px (Цветок появляется и покачивается) */
+.eye.expand-pupil .css-flower {
+  opacity: 1;
+  transform: scale(1);
+  animation: flowerSway 4s ease-in-out infinite alternate;
+}
+
+/* ЭТАП 2: Мышка в зоне 140px (Цветок прячется, огонь яростно горит) */
+.eye.is-alert .css-flower {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.eye.is-alert .css-fire {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Анимация живого горения для пламени */
+.eye.is-alert .flame-back {
+  animation: cssFireBurn 0.4s ease-in-out infinite alternate;
+}
+
+.eye.is-alert .flame-core {
+  animation: cssFireBurnInner 0.3s ease-in-out infinite alternate-reverse;
+}
+
+
 
 /* Скругленный и увеличенный нос */
 .skull-nose {
@@ -430,8 +538,34 @@ footer {
 @keyframes springFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 @keyframes slowRotate { to { transform: rotate(360deg); } }
 @keyframes slowRotateReverse { to { transform: rotate(-360deg); } }
-@keyframes flowerSway { from { transform: rotate(-10deg); } to { transform: rotate(20deg); } }
-@keyframes fireFlicker { from { transform: scale(1.1) cubic-bezier(0.25, 0.46, 0.45, 0.94); filter: brightness(1); } to { transform: scale(1.25); filter: brightness(1.3); } }
+
+/* ==========================================
+   ОБНОВЛЕННЫЕ АНИМАЦИИ
+   ========================================== */
+@keyframes flowerSway { 
+  from { transform: rotate(-15deg); } 
+  to { transform: rotate(15deg); } 
+}
+
+/* Эффект яростного «танцующего» пламени */
+@keyframes cssFireBurn {
+  0% {
+    transform: scaleX(0.9) scaleY(0.95) skewX(-3deg);
+    border-radius: 45% 55% 35% 35% / 65% 55% 40% 40%;
+  }
+  50% {
+    transform: scaleX(1.1) scaleY(1.05) skewX(3deg);
+  }
+  100% {
+    transform: scaleX(0.95) scaleY(1.1) skewX(-2deg);
+    border-radius: 55% 45% 35% 35% / 55% 65% 40% 40%;
+  }
+}
+
+@keyframes cssFireBurnInner {
+  0% { transform: scaleX(0.9) scaleY(0.9); }
+  100% { transform: scaleX(1.1) scaleY(1.1) translateY(-1px); }
+
 @keyframes approvalPulse { 0% { opacity: 0; } 100% { opacity: 1; } }
 
 /* Адаптивность медиа-запросов */
